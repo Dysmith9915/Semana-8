@@ -1,0 +1,47 @@
+class Articulo:
+    def __init__(self, codigo, nombre, cantidad, precio):
+        self.codigo = codigo  # Código único del artículo
+        self.nombre = nombre  # Nombre del artículo
+        self.cantidad = cantidad  # Cantidad disponible en stock
+        self.precio = precio  # Precio unitario del artículo
+
+class Inventario:
+    def __init__(self):
+        self.articulos = []  # Lista de artículos en el inventario
+
+    # Método para agregar un nuevo artículo al inventario
+    def agregar_articulo(self, codigo, nombre, cantidad, precio):
+        articulo = Articulo(codigo, nombre, cantidad, precio)  # Se crea el artículo dentro del inventario
+        self.articulos.append(articulo)
+
+    # Método para eliminar un artículo del inventario por su código
+    def eliminar_articulo(self, codigo):
+        for articulo in self.articulos:
+            if articulo.codigo == codigo:
+                self.articulos.remove(articulo)
+                break  # Se detiene después de eliminar el primer artículo encontrado
+
+    def listar_articulos(self):
+        if len(self.articulos) > 0:
+            print("Inventario de la tienda:")
+            for articulo in self.articulos:
+                print(f"- Código: {articulo.codigo}, Nombre: {articulo.nombre}, Cantidad: {articulo.cantidad}, Precio: ${articulo.precio:.2f}")
+        else:
+            print("El inventario está vacío.")
+
+# Ejemplo 
+
+inventario = Inventario()
+
+inventario.agregar_articulo(101, "Laptop", 5, 1200.00)
+inventario.agregar_articulo(102, "Mouse", 15, 25.00)
+inventario.agregar_articulo(103, "Teclado", 10, 45.00)
+
+# Se muestra el inventario
+inventario.listar_articulos()
+
+# Se elimina un artículo
+inventario.eliminar_articulo(102)
+
+# Se muestra el inventario actualizado
+inventario.listar_articulos()
