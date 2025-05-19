@@ -1,0 +1,39 @@
+# Definimos la clase Persona, que representa a cada asistente al evento
+class Persona:
+    def __init__(self, nombre, email):
+        self.nombre = nombre  # Nombre de la persona
+        self.email = email  # Email de contacto de la persona
+
+# Definimos la clase Evento, que gestiona los eventos y los participantes
+class Evento:
+    def __init__(self, nombre, fecha, ubicacion):
+        self.nombre = nombre  # Nombre del evento
+        self.fecha = fecha  # Fecha en que se llevará a cabo
+        self.ubicacion = ubicacion  # Lugar donde se realizará
+        self.participantes = []  # Lista que almacena los asistentes al evento
+
+    # Método para agregar una persona como participante del evento
+    def agregar_participante(self, persona):
+        self.participantes.append(persona)  # Se añade la persona a la lista de asistentes
+
+    # Método para mostrar los participantes del evento
+    def mostrar_participantes(self):
+        print(f"Lista de asistentes al evento '{self.nombre}':")
+        for persona in self.participantes:
+            print(f"- {persona.nombre} (Email: {persona.email})")  # Se muestran los nombres y correos de los asistentes
+
+# Ejemplo
+
+# Creación de un evento con sus detalles
+evento1 = Evento("Conferencia Python", "2025-06-15", "Auditorio Central")
+
+# Creación de personas que asistirán al evento
+persona1 = Persona("Dylan", "dylan@example.com")
+persona2 = Persona("Ana", "ana@example.com")
+
+# Se agregan los participantes al evento
+evento1.agregar_participante(persona1)
+evento1.agregar_participante(persona2)
+
+# Se muestra la lista de asistentes al evento
+evento1.mostrar_participantes()
